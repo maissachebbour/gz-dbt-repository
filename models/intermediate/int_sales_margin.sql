@@ -12,3 +12,5 @@
   FROM {{ref("stg_dbt__raw_gz_sales")}} s
   LEFT JOIN {{ref("stg_dbt__raw_gz_product")}} p
       USING (products_id)
+
+  
