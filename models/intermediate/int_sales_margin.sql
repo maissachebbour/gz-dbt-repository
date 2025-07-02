@@ -9,6 +9,6 @@
       purchase_price,
       ROUND(s.quantity*p.purchase_price,2) AS purchase_cost,
       ROUND(s.revenue - s.quantity*p.purchase_price, 2) AS margin
-  FROM {{ref("stg_raw__sales")}} s
-  LEFT JOIN {{ref("stg_raw__product")}} p
+  FROM {{ref("stg_dbt__raw_gz_sales")}} s
+  LEFT JOIN {{ref("stg_dbt__raw_gz_product")}} p
       USING (products_id)
