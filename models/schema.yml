@@ -41,20 +41,18 @@ models:
     tests:
      - unique:
         column_name: "(orders_id || '-' || products_id)"
-       
-   # Staging #
-   # ...snip...
+  
 
    # Intermediate #
   - name: int_orders_margin
     description: margin calculation per order
     columns:
-      - name: orders_id
+      - name: margin_orders_id
         description: primary key
         tests:
           - unique
           - not_null
-      - name: margin
+      - name: orders_margin
         description: margin = revenue - purchase_cost
         tests:
           - not_null
@@ -62,15 +60,15 @@ models:
         description: purchase_cost = quantity * purchase_price
         tests:
           - not_null
-      - name: date_date
+      - name: margin_date_date
         description: date of the order
         tests:
           - not_null
-      - name: revenue
+      - name: margin_revenue
         description: sum of revenue per order
         tests:
           - not_null
-      - name: quantity
+      - name: margin_quantity
         description: sum of quantity per order
         tests:
           - not_null
@@ -78,7 +76,7 @@ models:
       - name: int_sales_margin
         description: margin calculation per order line / product sales
         columns:
-      - name: orders_id
+      - name: sales_orders_id
         description: orders key
         tests:
           - not_null
@@ -90,7 +88,7 @@ models:
         description: margin = revenue - purchase_cost
         tests:
           - not_null
-      - name: Purchase_cost
+      - name: sales_Purchase_cost
         description: purchase_cost = quantity * purchase_price
         tests:
           - not_null
